@@ -64,5 +64,29 @@ public class Homework_s3_e1 {
         y = !y;
         System.out.println("!Y = " +y);
 
+        //Increment and Decrement Operators:
+        //Write a Java program that uses both the increment (++) and decrement (--) operators in a loop to count up to 10 and then back down to 1.
+        int g = 0;
+        while (g < 10) {
+            g++;
+            System.out.println("Nr. crt. = " + g);
+        }
+        while (g > 0) {
+            --g;
+            System.out.println("Nr.crt. = " +g);
+        }
+        //Create a program that takes an integer as input and then increments and decrements it by 1, displaying the output at each stage.
+        int i = 10;
+        System.out.println("i = " +i);
+        i++;
+        System.out.println("i = " +i);
+        i--;
+        System.out.println("i =" +i);
+        }
+
+        //Assignment and Compound Assignment Operators:
+        //Create a Java program that demonstrates the use of each compound assignment operator with integers.
+
+
     }
-}
+
