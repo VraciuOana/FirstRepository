@@ -16,6 +16,7 @@ public class NrPareNrImpare {
                 ContorInpar++ ;
             }
         }
+        System.out.println("Numarul = " +nr);
         System.out.println("Numere pare = " +ContorPar + "Numere inpare = " +ContorInpar);
     }
 }
