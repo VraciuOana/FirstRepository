@@ -1,6 +1,6 @@
 package session_5_advanced_flow_control;
 
-import java.sql.SQLOutput;
+import java.util.Scanner;
 
 public class Main {
 
@@ -10,10 +10,11 @@ public class Main {
 //        nestedForExample();
 //        nestedForExampleWithoutLabel();
 
-        boolean bol = nestedForExampleWithReturn();
-        if (bol) {
-            System.out.println("Found it!");
-        } else System.out.println("Value not found!");
+//        boolean bol = nestedForExampleWithReturn();
+//        if (bol) {
+//            System.out.println("Found it!");
+//        } else System.out.println("Value not found!");
+        doWhileExample();
 
         System.out.println("DONE!");
     }
@@ -84,6 +85,17 @@ public class Main {
             }
         }
         return false;
+    }
+
+    private static void doWhileExample(){
+        Scanner scanner = new Scanner(System.in);
+        int number;
+
+        do {
+            System.out.println("Introduceun numar pozitiv:");
+            number = scanner.nextInt();
+
+        } while (number <= 0);
     }
 }
 
