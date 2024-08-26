@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class IfAndSwitch {
     public static void main(String[] args) {
 
-        dayfOfWeekWithIf();
+//        dayfOfWeekWithIf();
+        daysOfWeekWithSwitch();
 
     }
 
@@ -37,6 +38,23 @@ public class IfAndSwitch {
         }
         else {
             System.out.println("Invalid");
+        }
+        }
+
+        public static void daysOfWeekWithSwitch() {
+        Scanner scanner = new Scanner (System.in);
+        System.out.println("Introducere day of the week (1-7):");
+        int day = scanner.nextInt();
+
+        switch (day) {
+            case 1 -> System.out.println("Luni");
+            case 2 -> System.out.println("Marti");
+            case 3 -> System.out.println("Miercuri");
+            case 4 -> System.out.println("Joi");
+            case 5 -> System.out.println("Vineri");
+            case 6 -> System.out.println("Sambata");
+            case 7 -> System.out.println("Duminica");
+            default -> System.out.println("Invalid");
         }
         }
     }
