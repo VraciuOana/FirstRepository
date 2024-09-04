@@ -1,17 +1,28 @@
 package session_7_utility_classes;
 
+import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.sql.Array;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Main {
     public static void main (String[] args){
 
-        demonstrateDateTimeOperations();
+//        demonstrateDateTimeOperations();
+//        demonstartionRandomNumberGenerator();
+//        demoMath ();
+//        readFromFileWithScanner();
+        gui();
     }
 
     private static void demonstrateDateTimeOperations(){
-        System.out.println("===");
+        System.out.println("===Date and Time Operations ===");
 
         LocalDate today = LocalDate.now();
         System.out.println("Today's date = " +today);
@@ -20,14 +31,111 @@ public class Main {
 
         LocalDateTime currentDateTime = LocalDateTime.now();
         System.out.println("Current date and time: " +currentDateTime);
-        LocalDateTime futuredatetime = currentDateTime.plusHours(5).plusMinutes(30);
-        System.out.println("5 h and 30 min later:" +futuredatetime);
+        LocalDateTime futureDateTime = currentDateTime.plusHours(5).plusMinutes(30);
+        System.out.println("5 h and 30 min later:" +futureDateTime);
+
+        LocalDateTime futureDate = LocalDateTime.of(2025,1,1,10,30);
+        String result = futureDate.isBefore(LocalDateTime.now()) ? "before" : "after";
+        System.out.println(futureDate + " is " + result + " current date time");
 
         //parsing
         String dateTimeString = "2025-01-01 10:30";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime parsedDataTime = LocalDateTime.parse(dateTimeString, formatter);
+        System.out.println("Parsed local date time: " +parsedDataTime);
+
+        DateTimeFormatter newFormat = DateTimeFormatter.ofPattern("dd MMMM yyyy HH:mm:ss");
+        System.out.println("New format date time: " +parsedDataTime.format(newFormat));
+
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
+        System.out.println("java.util.Date :" +utilDate);
+        System.out.println("java.sql.Date : "+sqlDate);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        String formattedTime = simpleDateFormat.format(utilDate);
+        System.out.println("Formatted time: " +formattedTime);
+
+        Timestamp currentTimeStamp = new Timestamp(System.currentTimeMillis());
+        System.out.println("Current Timestamp: " + currentTimeStamp);
+
+        Timestamp timestamp1 = Timestamp.valueOf("2024-09-04 18:00:00.123");
+        Timestamp timestamp2 = Timestamp.valueOf("2024-09-04 18:03:00.123");
+
+        long diffInSeconds = (timestamp2.getTime() - timestamp1.getTime()) / 1000;
+        System.out.println("Diff: "+diffInSeconds);
+
 
     }
 
-    
+    private static void demonstartionRandomNumberGenerator() {
+        System.out.println(" === Random Number Generator ===");
+
+        Random random = new Random();
+
+        int randomInt = random.nextInt(100) +1; //1 to 100
+        System.out.println("Random int: " +randomInt);
+
+        double randomDouble = random.nextDouble();
+        System.out.println("Random Double: " +randomDouble);//(0-1)
+
+        String[] names = {"Sam", "Ion", "Dan", "Ilie"};
+        String theChosen = names[random.nextInt(names.length)];
+        System.out.println("Random name: " +theChosen);
+
+        boolean randomBoolean = random.nextBoolean();
+        System.out.println("Random boolean :" +randomBoolean);
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        Collections.shuffle(numbers, random);
+        System.out.println("list: " +numbers);
+
+    }
+
+    private static void demoMath (){
+
+        double a = 5.3;
+        double b = 8.2;
+
+        double max = Math.max(a,b);
+        System.out.println("Max:" +max);
+
+        long roundedB = Math.round(b);
+        System.out.println("B rounded: " +roundedB);
+
+    }
+
+    private static void readFromFileWithScanner() {
+        Scanner scanner;
+        try {
+            scanner = new Scanner(new File("example.txt"));
+
+
+            while (scanner.hasNextLine()) {
+                System.out.println("Text: " + scanner.nextLine());
+
+            }
+
+            scanner.close();
+
+        }catch (FileNotFoundException e) {
+                System.out.println("File was not found!");
+            }
+    }
+
+    private static void gui(){
+        JFrame frame = new JFrame("GUI Example");
+        frame.setSize(300,200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JButton button = new JButton("Click me!");
+        JLabel label = new JLabel("Oana");
+
+        frame.getContentPane().add(button, "North");
+        frame.getContentPane().add(label,"Center");
+
+        frame.setVisible(true);
+    }
+
 }
